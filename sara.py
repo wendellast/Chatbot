@@ -1,24 +1,32 @@
 
 import pyttsx3
 import chatterbot
+import sys
 
 from static.functions.functions import *
 from chatterbot import ChatBot
 from chatterbot.comparisons import LevenshteinDistance
 from difflib import SequenceMatcher
+from ui import root
 
 
 
 
 #Config e var
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
+ACCEPTANCE = 0.70
+args = sys.argv
+
+argv = [
+
+]
+argv.append(args)
 
 
-
+print(args)
 #Chatterbot
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 # Inicialize o ChatBot
-ACCEPTANCE = 0.70
 
 def comparate_messages(message, candidate_message):
     similarity = 0.0
@@ -77,21 +85,31 @@ class IA():
 
     def Sara(self)  :
 
-        #Config
-        self.Input = input
-        str(self.Input)
+        
+        if ('-U' in argv[0]):
+            print('interface')
+            root.mainloop()
 
-        #Loop
-        while True:
+        else:
             
-            #Resposta ALTA PROPIEDADE
-            if (self.Input() == 'oi'):
-                print('Olá')
-            else:
-                #resposta Chatterbot
-                response = botChat.get_response(self.Input('Qual sua pergunta? '))
-                print(response.text)
-   
+            print('no')
+            #Config
+            self.Input = input
+            str(self.Input)
+
+            #Loop
+            while True:
+                
+                #Resposta ALTA PROPIEDADE
+                """if (self.Input() == 'oi'):
+                    print('Olá')
+                else:
+                    #resposta Chatterbot
+                    response = botChat.get_response(self.Input('Qual sua pergunta? '))
+                    print(response.text)
+                """
+                pass
+
 
 
 

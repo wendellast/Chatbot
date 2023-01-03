@@ -7,7 +7,7 @@ import os
 openai_key = os.getenv('KeyAPI')
 
 
-openai.api_key = openai_key
+openai.api_key = KeyAPI
 
 
 
