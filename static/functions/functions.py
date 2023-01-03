@@ -1,10 +1,9 @@
 import openai
-
 import os
 
 
 #Config
-openai_key = os.getenv('KeyAPI')
+#openai_key = os.getenv('KeyAPI')
 
 
 openai.api_key = KeyAPI
