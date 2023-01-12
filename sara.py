@@ -1,6 +1,6 @@
 import sys
 from rich import print
-from modulo import bot_resp
+from main import bot_resp
 
 
 # Config e var
@@ -71,13 +71,6 @@ class IA():
             bot_resp(self.Input)
 
 
-            # Resposta ALTA PROPIEDADE
-            # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
-           
-
-
-            # Resposta NíVEL MÉDIO
-            # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
           
                
 

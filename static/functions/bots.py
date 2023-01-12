@@ -1,10 +1,5 @@
-import pyttsx3
 import chatterbot
-
-from modulo import bot_resp
-from static.functions.functions import botIA
-from static.functions.functions import *
-
+import openai
 
 from chatterbot import ChatBot
 from chatterbot.comparisons import LevenshteinDistance
@@ -68,3 +63,36 @@ botChat = ChatBot("Sara",
                       }
 
                   ])
+
+
+
+
+#Config
+#openai_key = os.getenv('KeyAPI')
+KeyAPI='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'
+
+openai.api_key = KeyAPI
+
+
+
+
+#OPENAI
+# *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
+def botIA(ask):
+    response = openai.Completion.create(
+        engine="text-davinci-002",
+        prompt=ask,
+        temperature=0.5,
+        max_tokens=1024,
+        stop=None,
+        n=1
+        
+    )
+
+    message = response.choices[0].text
+    
+    return message
+
+
+def askUi(ask):
+    return  ask

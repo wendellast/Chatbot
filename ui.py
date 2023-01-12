@@ -1,7 +1,7 @@
 from tkinter import *
-from static.functions.functions import *
-from modulo import bot_resp
-from modulo import resp2
+
+from main import bot_resp
+
 
 
 

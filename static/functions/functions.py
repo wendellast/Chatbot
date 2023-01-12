@@ -1,33 +1,20 @@
-import openai
-import os
+import pyttsx3
 
 
 #Config
-#openai_key = os.getenv('KeyAPI')
-KeyAPI='22'
+sara_voz=pyttsx3.init()
 
-openai.api_key = KeyAPI
+# Função de ajuste de voz da sara
+sara_voz.setProperty('voice', 'pt-br')
+# No 'm2'(masculino) pode colocar 'f2'(feminino) e números até 7
+rate = sara_voz.getProperty('rate')
+sara_voz.setProperty('rate', rate-50)
 
-
-
-
-#OPENAI
-# *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
-def botIA(ask):
-    response = openai.Completion.create(
-        engine="text-davinci-002",
-        prompt=ask,
-        temperature=0.5,
-        max_tokens=1024,
-        stop=None,
-        n=1
-        
-    )
-
-    message = response.choices[0].text
+def fale(audio):
+    #notification.notify(title = "SARA",message = audio,timeout = 3)
     
-    return message
-
-
-def askUi(ask):
-    return  ask
+    #stream.stop_stream()
+    #print(f'[bold purple]SARA:[/] [cyan]{audio}[/]')
+    sara_voz.say(audio)
+    sara_voz.runAndWait()
+    #stream.start_stream ()
