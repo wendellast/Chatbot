@@ -4,7 +4,7 @@ import os
 
 #Config
 #openai_key = os.getenv('KeyAPI')
-
+KeyAPI='22'
 
 openai.api_key = KeyAPI
 
@@ -27,3 +27,7 @@ def botIA(ask):
     message = response.choices[0].text
     
     return message
+
+
+def askUi(ask):
+    return  ask
