@@ -13,6 +13,14 @@ from difflib import SequenceMatcher
 ACCEPTANCE = 0.70  # Txa de acerto
 
 
+#openai_key = os.getenv('KeyAPI')
+KeyAPI='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 '
+
+openai.api_key = KeyAPI
+
+
+
+
 
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 # Chatterbot
@@ -65,13 +73,6 @@ botChat = ChatBot("Sara",
                   ])
 
 
-
-
-#Config
-#openai_key = os.getenv('KeyAPI')
-KeyAPI='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'
-
-openai.api_key = KeyAPI
 
 
 

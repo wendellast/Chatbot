@@ -63,7 +63,7 @@ class IA():
                 str(self.Input.lower())
                 
             self.Input = self.inputIa()
-            str(self.Input.lower())
+            self.Input = str(self.Input.lower())
 
             if('sair' in self.Input):
                 break

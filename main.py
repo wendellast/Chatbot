@@ -4,13 +4,11 @@ from static.functions.bots import *
 from static.functions.functions import *
 
 def bot_resp(ask):
-    ask.lower()
+    ask = ask.lower()
     #Resposta do Sistema
-    if ('oi' in ask):
-        print('Hello')
-        return 'Hello'
+    
 
-    if 'bom dia' in ask: #Boa Noite Sara
+    if ('bom dia' in ask): #Boa Noite Sara
         Horario = int(datetime.datetime.now().hour)
         if Horario >= 0 and Horario < 12:
             fale('Olá')
@@ -21,22 +19,13 @@ def bot_resp(ask):
             fale('Agora não é mais de manhã')
             fale('Já passou do meio dia')
             fale('Estamos no período da tarde')
-            return ['Olá', '\n Bom dia ']
+            
+
         elif Horario >= 18 and Horario != 0:
             fale('Agora não é de manhã')
             fale('Já estamos no período noturno')
             fale('Boa noite')
-            return ['Olá', '\n Bom dia ']   
-
-
-
-
-
-
-
-
-
-
+            
 
 
     else:
