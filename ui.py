@@ -1,43 +1,37 @@
 from tkinter import *
-
 from main import bot_resp
 
 
 
-
-def respUi():
-    return e.get()
-
-
-root = Tk()
-
-root.title('Chat')
 #CONFIG
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
+root = Tk()
+root.title('SaraWa')
 txt = Text(root)
+
 
 
 
 #FUNCTION >>> 
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
-def send():
+def respUi():
+    return e.get()
+
+
+def send() -> str:
     
     
     send = f"Você: {e.get()}"
     pergunta = str(e.get().lower())
 
     resp = bot_resp(pergunta)   
-    #ask = pergunta
 
-    
-    #resp = resp2()
-    #resp = botIA(ask)
+
+
     txt.insert(END, "\n" + send)
-
-    
     txt.insert(END, "\n" + f'{resp}')
-
     e.delete(0, END)
+
 
 
 #WIDGET >>> 

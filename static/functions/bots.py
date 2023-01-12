@@ -6,20 +6,15 @@ from chatterbot.comparisons import LevenshteinDistance
 from difflib import SequenceMatcher
 
 
-
-
 # Config e var
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
-ACCEPTANCE = 0.70  # Txa de acerto
+ACCEPTANCE = 0.70  # Taxa de acerto
 
 
-#openai_key = os.getenv('KeyAPI')
-KeyAPI='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 '
+# openai_key = os.getenv('KeyAPI')
+KeyAPI = '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 '
 
 openai.api_key = KeyAPI
-
-
-
 
 
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
@@ -73,11 +68,7 @@ botChat = ChatBot("Sara",
                   ])
 
 
-
-
-
-
-#OPENAI
+# OPENAI
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 def botIA(ask):
     response = openai.Completion.create(
@@ -87,13 +78,13 @@ def botIA(ask):
         max_tokens=1024,
         stop=None,
         n=1
-        
+
     )
 
     message = response.choices[0].text
-    
+
     return message
 
 
-def askUi(ask):
-    return  ask
+def askUi(ask) -> str:
+    return ask

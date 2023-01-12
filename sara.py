@@ -1,7 +1,7 @@
 import sys
 from rich import print
 from main import bot_resp
-
+from static.functions.functions import fale
 
 # Config e var
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
@@ -18,8 +18,6 @@ BLUE, RED, WHITE, YELLOW, MAGENTA, GREEN, END = '\33[94m', '\033[91m', '\33[97m'
 print(args)
 
 
-
-
 # Class IA
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 
@@ -28,15 +26,15 @@ class IA():
     def __init__(self):
         super(IA, self).__init__()
 
-    #Funções
+    # Funções
     # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
     def inputIa(self) -> input:  # desenho input
         Input = input(f"{RED}(つ◕౪◕)つ━☆ﾟ.*･｡ﾟ {END}")
         return Input
 
-
-    #MAIN
+    # MAIN
     # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
+
     def Sara(self):
         Ui = False
 
@@ -47,34 +45,34 @@ class IA():
             from ui import respUi
             root.mainloop()
             Ui = True
-        
 
-        # Terminal
-        # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
-             
         # Loop
         while True:
-            
-            
+
             # Interface Gráfica
             # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
-            if (Ui == True):   
+            if (Ui == True):
                 self.Input = respUi()
                 str(self.Input.lower())
-                
+
+            # Terminal
+            # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
+
             self.Input = self.inputIa()
             self.Input = str(self.Input.lower())
 
-            if('sair' in self.Input):
+            command_close = [
+                'sair', 'fecha'
+            ]
+
+            
+
+            if (self.Input in command_close):
+                fale('Tudo bem')
+                fale('Até mais')
                 break
-           
+            
             bot_resp(self.Input)
-
-
-          
-               
-
-                
 
 
 # Finally
