@@ -2,8 +2,8 @@ import sys
 from rich import print
 from main import bot_resp
 from static.functions.functions import fale
-from static.functions.config import *
-from static.functions.config import primeira_vez
+from static.config.config import *
+from static.config.config import primeira_vez
 # Config e var
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 
