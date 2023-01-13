@@ -1,6 +1,6 @@
 import pyttsx3
 from rich import print
-
+from plyer import notification
 # Config >>>
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 
@@ -20,9 +20,10 @@ sara_voz.setProperty('rate', rate-50)
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 
 def fale(audio):
+    notification.notify(title= "Sara", message = audio, app_name="SaraWA", app_icon="../img/sara_img.png", timeout=3, ticker="2", toast=True)
     # notification.notify(title = "SARA",message = audio,timeout = 3)
 
-    # stream.stop_stream()
+    #stream.stop_stream()
     print(f'[bold purple]SARA:[/] [cyan]{audio}[/]')
     sara_voz.say(audio)
     sara_voz.runAndWait()

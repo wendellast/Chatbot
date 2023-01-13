@@ -2,7 +2,8 @@ import sys
 from rich import print
 from main import bot_resp
 from static.functions.functions import fale
-
+from static.functions.config import *
+from static.functions.config import primeira_vez
 # Config e var
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 
@@ -57,7 +58,8 @@ class IA():
 
             # Terminal
             # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
-
+            primeira_vez()
+            designer_sara()
             self.Input = self.inputIa()
             self.Input = str(self.Input.lower())
 
