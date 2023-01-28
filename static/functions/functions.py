@@ -19,6 +19,8 @@ sara_voz.setProperty('rate', rate-50)
 # Functions>>>
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 
+# Fale, Diz a sara para dizer as frases em voz alta>>>
+# *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 def fale(audio):
     notification.notify(title= "Sara", message = audio, app_name="SaraWA", app_icon="../img/sara_img.png", timeout=3, ticker="2", toast=True)
     # notification.notify(title = "SARA",message = audio,timeout = 3)
@@ -27,4 +29,22 @@ def fale(audio):
     print(f'[bold purple]SARA:[/] [cyan]{audio}[/]')
     sara_voz.say(audio)
     sara_voz.runAndWait()
+   
     # stream.start_stream ()
+
+
+
+        
+# Say retorna fala em forma de lista para UI>>>
+# *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
+def say(args:list) -> str:
+    strings = [
+
+    ]
+
+    for i in args:
+        fale(i)
+        strings.append(i)
+    
+    return "\n".join(strings)
+    

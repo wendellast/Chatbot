@@ -1,7 +1,10 @@
 import datetime
+
+from train_sara import treinar
 from rich import print
 from static.functions.bots import *
 from static.functions.functions import *
+
 
 #Main >>> 
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
@@ -11,19 +14,48 @@ def bot_resp(ask):
     # Resposta do Sistema
     if ('bom dia' in ask):  # Boa Noite Sara
         Horario = int(datetime.datetime.now().hour)
-        if Horario >= 0 and Horario < 12:
-            fale('Olá')
-            fale('Bom dia')
+        if (Horario >= 0 and Horario < 12):
+            
+            phrases = [
+               'Bom dia !'
+               'Espero que tenha uma ótima manhã'
 
-        elif Horario >= 12 and Horario < 18:
-            fale('Agora não é mais de manhã')
-            fale('Já passou do meio dia')
-            fale('Estamos no período da tarde')
+            ] 
 
-        elif Horario >= 18 and Horario != 0:
-            fale('Agora não é de manhã')
-            fale('Já estamos no período noturno')
-            fale('Boa noite')
+            reps = say(phrases)
+
+            return reps 
+
+
+
+        elif (Horario >= 12 and Horario < 18):
+           
+            phrases = [
+            'Desculpe',
+            'Já passou das 11 horas',
+            'Estamos no período da tarde',
+            'Então, Boa Tarde !',
+            ] 
+
+            reps = say(phrases)
+            
+            return reps 
+
+
+        elif (Horario >= 18 and Horario != 0):
+            phrases = [
+               'Desculpe',
+               'Mas já passou do Horario  da tarde',
+               'Agora já está de noite',
+            ] 
+
+            reps = say(phrases)
+        
+            return reps 
+
+
+        elif (['treinar', 'iniciar treinamento', 'comesse a treinar'] in ask):
+            treinar()
 
     else:
 
