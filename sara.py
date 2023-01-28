@@ -21,12 +21,13 @@ print(args)
 
 # Class IA
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
-
+primeira_vez()
+designer_sara()
 class IA():
 
     def __init__(self):
         super(IA, self).__init__()
-
+        
     # Funções
     # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
     def inputIa(self) -> input:  # desenho input
@@ -58,8 +59,7 @@ class IA():
 
             # Terminal
             # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
-            primeira_vez()
-            designer_sara()
+     
             self.Input = self.inputIa()
             self.Input = str(self.Input.lower())
 
