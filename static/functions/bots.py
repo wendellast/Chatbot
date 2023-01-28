@@ -1,5 +1,7 @@
 import chatterbot
 import openai
+import os 
+
 
 from chatterbot import ChatBot
 from chatterbot.comparisons import LevenshteinDistance
@@ -12,8 +14,7 @@ ACCEPTANCE = 0.70  # Taxa de acerto
 
 
 # openai_key = os.getenv('KeyAPI')
-KeyAPI = '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 '
-
+KeyAPI = os.environ['PassW']
 openai.api_key = KeyAPI
 
 
