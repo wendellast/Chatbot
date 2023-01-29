@@ -48,3 +48,12 @@ def say(args:list) -> str:
     
     return "\n".join(strings)
     
+def show(args):
+    strings = [ 
+
+    ]
+    
+    for i in args:
+        strings.append(i)
+    
+    return '\n'.join(strings)

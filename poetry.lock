@@ -768,6 +768,18 @@ files = [
 ]
 
 [[package]]
+name = "pydbus"
+version = "0.6.0"
+description = "Pythonic DBus library"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "pydbus-0.6.0-py2.py3-none-any.whl", hash = "sha256:66b80106352a718d80d6c681dc2a82588048e30b75aab933e4020eb0660bf85e"},
+    {file = "pydbus-0.6.0.tar.gz", hash = "sha256:4207162eff54223822c185da06c1ba8a34137a9602f3da5a528eedf3f78d0f2c"},
+]
+
+[[package]]
 name = "pygments"
 version = "2.14.0"
 description = "Pygments is a syntax highlighting package written in Python."
@@ -4312,4 +4324,4 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "ee2a9a477b476f88938dec86bd82caa461f8d667bcc2b4d5b880857bdab0fcdb"
+content-hash = "2b8b4dd87289a1d3ed2a6fa37a22670afc6ce8ac1f4b4747d61b46ea7700edb8"
