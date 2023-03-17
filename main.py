@@ -140,7 +140,7 @@ def bot_resp(ask):
 
         treinar()
 
-    elif ('mostre o histórico', 'abra o histórico', 'historico'[0] in ask):
+    elif (['mostre o histórico', 'abra o histórico', 'historico'][0] in ask):
 
         try:
             say(['Tudo bem !', ' Eu vou mostra o histórico'])
@@ -160,27 +160,30 @@ def bot_resp(ask):
 
         except:
             say(['Desculpe não foi possível mostra o histórico algo deu errado !'])
-    
-    elif('limpar histórico', 'limpar historico', 'apagar histórico', 'delete o histórico', 'apague comandos', 'clear historico' in ask):
+
+    elif (['limpar histórico', 'limpar historico', 'apagar histórico', 'delete o histórico', 'apague comandos', 'clear historico'][0] in ask):
+        
+        say(['Tudo bem,' ' Vou limpar o histórico de comandos !'])
         try:
-            say(['Tudo bem,' ' Vou limpar o histórico de comandos !'])
             with open(file_path, 'r+') as arg:
                 arg.truncate(0)
+            say(['Histórico limpo com sucesso!'])
         except:
+            
             say(['Desculpe, eu não consegue apagar o histórico algo deu errado'])
-    
-   
+
     else:
-        return 0
+ 
         # Resposta Chatterbot
         response = botChat.get_response(ask)
-
         if response.confidence > 0.0:
+            
             print(response.text)
             return response.text
 
         # Resposta OpenAI
         else:
+
             resp1 = botIA(ask)
             print(resp1)
             return resp1

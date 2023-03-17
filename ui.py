@@ -1,4 +1,6 @@
 from tkinter import *
+
+from tkinter import ttk
 from main import bot_resp
 
 
