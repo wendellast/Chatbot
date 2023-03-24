@@ -1,7 +1,9 @@
 import pyttsx3
 from rich import print
-from plyer import notification
 import platform
+
+from datetime import datetime
+from plyer import notification
 # Config >>>
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 
@@ -72,3 +74,10 @@ def show(args):
         strings.append(i)
     
     return '\n'.join(strings)
+
+#Hour
+def time_hour():
+	
+	hora = datetime.now()
+	horas= hora.strftime('%H horas e %M minutos')
+	fale(f'Agora são {horas}')

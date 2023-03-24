@@ -1,6 +1,0 @@
-pip install openai
-pip install httpx
-
-pip install chatterbot
-pip install chatterbot-corpus
-

@@ -14,7 +14,7 @@ def bot_resp(ask):
     Horario = int(datetime.datetime.now().hour)
 
     # History
-    file_path = 'static/config/temp.txt'
+    file_path = 'static/config/cache/temp.txt'
     # olhar se arquivo temp existe
     if not os.path.exists(file_path):
         open(file_path, 'w').close()

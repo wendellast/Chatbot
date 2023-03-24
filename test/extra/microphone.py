@@ -1,19 +1,19 @@
 import speech_recognition as sr
 
-# Lista os nomes dos microfones disponíveis
-print(sr.Microphone.list_microphone_names())
-
 # Cria um objeto de reconhecimento de fala
 r = sr.Recognizer()
 
 while True:
-    # Ajusta o reconhecimento de fala para o ruído ambiente
     with sr.Microphone() as source:
-        #r.adjust_for_ambient_noise(source)
         print("Diga algo...")
-        audio = r.listen(source)
+        audio = r.listen(source, phrase_time_limit=5)  # Limite de 5 segundos para reconhecimento
 
     # Tentativa de reconhecer o áudio
-    resp = r.recognize_google(audio, language='pt-BR')
-    print(resp)
+    try:
+        resp = r.recognize_google(audio, language='pt-BR')
+        print(resp)
+    except sr.UnknownValueError:
+        print("Não foi possível reconhecer a fala")
+    except sr.RequestError as e:
+        print(f"Não foi possível completar a requisição: {e}")
     

@@ -15,7 +15,7 @@ ACCEPTANCE = 0.70  # Taxa de acerto
 
 
 # openai_key = os.getenv('KeyAPI')
-KeyAPI = 'Sua-Key' #os.environ['PassW']
+KeyAPI = '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' #os.environ['PassW']
 openai.api_key = KeyAPI
 
 
