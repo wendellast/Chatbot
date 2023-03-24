@@ -4,6 +4,7 @@ from main import bot_resp
 from static.functions.functions import fale
 from static.config.config import *
 from static.config.config import primeira_vez
+
 # Config e var
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 
@@ -64,7 +65,8 @@ class IA():
             self.Input = str(self.Input.lower())
 
             command_close = [
-                'sair', 'fecha'
+                'sair', 'fecha','exit',
+                'fechar'
             ]
 
             

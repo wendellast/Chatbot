@@ -173,17 +173,24 @@ def bot_resp(ask):
             say(['Desculpe, eu não consegue apagar o histórico algo deu errado'])
 
     else:
- 
-        # Resposta Chatterbot
-        response = botChat.get_response(ask)
-        if response.confidence > 0.0:
-            
-            print(response.text)
-            return response.text
-
-        # Resposta OpenAI
-        else:
+        try:
 
             resp1 = botIA(ask)
-            print(resp1)
+            #print(resp1)
+            text = str(resp1)
+            fale(text)
+            
+            
             return resp1
+        except  Exception as e:
+            print(e)    
+
+    #LAgacy
+    # # Resposta Chatterbot
+        # response = botChat.get_response(ask)
+        # if response.confidence > 0.0:
+            
+        #     print(response.text)
+        #     return response.text
+
+        # # Resposta OpenAI

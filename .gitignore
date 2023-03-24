@@ -3,3 +3,4 @@ secure/
 venv/
 env/
 .vscode/
+test/tash/
