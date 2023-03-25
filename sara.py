@@ -42,31 +42,32 @@ class IA():
     def inputMic(self):
 
 
+       
         r = sr.Recognizer()
-
         with sr.Microphone() as s:
             print('ouvindo...')
             r.adjust_for_ambient_noise(s)
             audio = r.listen(s)
-
             with ThreadPoolExecutor() as executor:
                 future = executor.submit(r.recognize_google, audio, language='pt-BR')
-
             try:
                 speech = future.result()
                 speech = speech.lower()
+            except sr.UnknownValueError:
+                print("Não entendi, fale novamente")
+                speech = None
 
-            except:
-                print('Não entendi, fale novamente')
-                return 'none'
-
+            except sr.RequestError as e:
+                print(f"Erro ao acessar o serviço de reconhecimento de voz; {e}")
+                speech = None
         return speech
+
 
     # MAIN
     # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 
     def Sara(self):
-        Ui = False
+        UI = False
 
         # Config
         # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
@@ -74,7 +75,7 @@ class IA():
             from ui import root
             from ui import respUi
             root.mainloop()
-            Ui = True
+            UI = True
 
         # Loop
         while True:
@@ -86,7 +87,7 @@ class IA():
 
                 # Interface Gráfica
                 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
-                if (Ui == True):
+                if (UI == True):
                     self.Input = respUi()
                     str(self.Input.lower())
 
@@ -97,7 +98,12 @@ class IA():
                     self.Input = str(self.Input.lower())
                 else:
                     self.Input = self.inputMic()
-                    self.Input = str(self.Input.lower())
+
+                # Adicionar verificação aqui
+                if self.Input is None:
+                    continue
+
+
 
                 command_close = [
                     'sair', 'fecha','exit',

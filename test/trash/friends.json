@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Camile Andrade Guimarães",
+    "date_of_birth": "2006-01-24",
+    "hobbies": ["jogar", "Tocar estrumentos"],
+    "personality": "calma e introspectiva",
+    "Descr"
+  },
+
+  {
+    "name": "João",
+    "date_of_birth": "1996-03-22",
+    "hobbies": ["jogar futebol", "assistir filmes", "viajar"],
+    "personality": "extrovertido e brincalhão"
+  },
+  {
+    "name": "Maria",
+    "date_of_birth": "1999-09-01",
+    "hobbies": ["dançar", "cantar", "cozinhar"],
+    "personality": "animada e comunicativa"
+  },
+  {
+    "name": "Ana",
+    "date_of_birth": "1998-11-05",
+    "hobbies": ["ler", "assistir séries", "fazer trilhas"],
+    "personality": "observadora e reflexiva"
+  }
+]

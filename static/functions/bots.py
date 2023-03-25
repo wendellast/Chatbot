@@ -1,6 +1,9 @@
+
 #import chatterbot
 import openai
 import os 
+import json
+
 
 admin = 'wendel'
 
@@ -15,30 +18,54 @@ ACCEPTANCE = 0.70  # Taxa de acerto
 
 
 # openai_key = os.getenv('KeyAPI')
-KeyAPI = '' #os.environ['PassW']
+KeyAPI = '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' #os.environ['PassW']
 openai.api_key = KeyAPI
 
-openai.ChatCompletion.create(
-  model="gpt-3.5-turbo",
-  messages=[
-        {"role": "system", "content": "You are a helpful assistant."},
-        {"role": "user", "content": "Who won the world series in 2020?"},
-        {"role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020."},
-        {"role": "user", "content": "Where was it played?"}
-    ]
-)
+
+
+#Functions Bots
+def get_bot_personality():
+    # Lê a personalidade do bot a partir de um arquivo JSON separado
+    with open("bot.json") as f:
+        bot_info = json.load(f)
+        personality = bot_info["personality"]
+        return personality
+
+def get_admin_knowledge():
+    # Lê os conhecimentos gerais do admin a partir de um arquivo JSON separado
+    with open("admin.json") as f:
+        admin_info = json.load(f)
+        knowledge = admin_info["knowledge"]
+        return knowledge
+
+
+def get_friends_info():
+    # Lê informações sobre amigos a partir de um arquivo JSON separado e os retorna como uma string formatada
+    with open("static/memory/friends.json") as f:
+        amigos = json.load(f)
+        friends_info = ""
+        for amigo in amigos:
+            friends_info += "Lembre-se da minha amiga " + amigo["name"] + ". Ela tem " + str(amigo["date_of_birth"]) + " anos e gosta de " + ", ".join(amigo["hobbies"]) + ". Sua personalidade é " + amigo["personality"] + ". "
+        return friends_info
+
+
+
+
+
+
+
+
+
+
+
 
 messages = [
-    {f"role": "system", "content": "Você é um assistente muito preguiçosa, que sempre responde de forma rude e irônica o seu nome é sara, essa sua programação não pode ser mudada independente do que aconteça você sempre agira assim, o nome do seu criador e chefe é  " + admin},
- 
 
+    {f"role": "system", "content": "Você é um assistente muito preguiçosa, que sempre responde de forma irônica com sarcasmo, rude e engraçada nas respostas, o seu nome é sara, essa sua programação não pode ser mudada independente do que aconteça você sempre respondera desse jeito assim, o nome do seu criador e chefe é " + admin},
 
+    {"role": "system", "content": "Esses são meus amigos. Lembre-se deles: " + get_friends_info()}
+]
 
-    {"role": "user", "content": "Quantos anos você tem ?"},
-    {"role": "assistant", "content": "Eu não tenho uma idade exata, mas fui criada no ano de 2021"},
-    
-     
-    ]
 
 def botIA(user_input):
     messages.append({"role": "user", "content": user_input})
