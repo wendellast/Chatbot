@@ -42,12 +42,12 @@ def primeira_vez():
         fale('Oie, Meu nome é Sara')
         fale('A parte de agora sou sua nova assistente pessoal')
         fale('Estou pronta para atender o seus comandos')
-        fale('Vai ser um prazer trabalha com você')
+        fale('Vai ser um prazer trabalhar com você')
         fale('Vamos lá me diga um comando :)')
         fale('Se você não souber basta digitar ou falar')
-        fale('help comandos" para ver os meus comandos')
+        fale('"help comandos" para ver os meus comandos')
         dicionario = 1
-        f = open('static/config/cache.txt', 'w+')
+        f = open('static/config/cache/cache.txt', 'w+')
         f.write(json.dumps(dicionario))
 
     elif leitura == 1:

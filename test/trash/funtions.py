@@ -1,7 +1,4 @@
 
-
-
-
 def datahoje():
     from datetime import date
     dataatual =  date.today()

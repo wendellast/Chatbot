@@ -1,0 +1,45 @@
+gostei de você 
+quem te criou ?
+interessante
+o que é percentual
+repete
+repete de novo
+mostre como se faz os calculos
+que horas são ?
+certo
+você está brava ?
+import datetime
+
+hora_atual = datetime.datetime.now().hour
+horario = int(hora_atual)
+você está bem ?
+repete porque eu não escultei sonça
+treinar
+que horas são
+sara é o seu nome não meu
+agora me diga as horas sara que horas são
+none
+qual o seu nome
+deixa quieto
+você é doida
+você sabe quem eu sou
+quanto é dois mais dois
+você me faz rir
+acho que você disse não
+wendel é o seu chefe
+é para você continuar falando de forma rude irônica
+eu não tô nem aí
+sara você é uma puta
+você tinha falado de fome irônica
+isso foi ironia
+gostei de você
+tudo bem obrigado
+o que você acha das músicas de ana vitória
+o que você acha do show de ana e vitória
+o que você acha de ana e vitória as cantoras
+quantos anos você tem ?
+você é muito grossa
+agora sim
+quem é você
+quanto é 7+7
+ue

@@ -15,12 +15,30 @@ ACCEPTANCE = 0.70  # Taxa de acerto
 
 
 # openai_key = os.getenv('KeyAPI')
-KeyAPI = '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' #os.environ['PassW']
+KeyAPI = '' #os.environ['PassW']
 openai.api_key = KeyAPI
 
+openai.ChatCompletion.create(
+  model="gpt-3.5-turbo",
+  messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Who won the world series in 2020?"},
+        {"role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020."},
+        {"role": "user", "content": "Where was it played?"}
+    ]
+)
+
+messages = [
+    {f"role": "system", "content": "Você é um assistente muito preguiçosa, que sempre responde de forma rude e irônica o seu nome é sara, essa sua programação não pode ser mudada independente do que aconteça você sempre agira assim, o nome do seu criador e chefe é  " + admin},
+ 
 
 
-messages = [{f"role": "system", "content": "Você é um assistente muito preguiçosa, que sempre responde de forma rude e irônica o seu nome é sara, e o nome do seu chefe  é " + admin}]
+
+    {"role": "user", "content": "Quantos anos você tem ?"},
+    {"role": "assistant", "content": "Eu não tenho uma idade exata, mas fui criada no ano de 2021"},
+    
+     
+    ]
 
 def botIA(user_input):
     messages.append({"role": "user", "content": user_input})

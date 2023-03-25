@@ -1,17 +1,19 @@
-import datetime
 import os
-
 from train_sara import treinar
 from rich import print
 from static.functions.bots import *
 from static.functions.functions import *
+import datetime
 
+hora_atual = datetime.datetime.now().hour
+
+Horario = int(hora_atual)
 
 # Main >>>
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 def bot_resp(ask):
     ask = ask.lower()
-    Horario = int(datetime.datetime.now().hour)
+   
 
     # History
     file_path = 'static/config/cache/temp.txt'
