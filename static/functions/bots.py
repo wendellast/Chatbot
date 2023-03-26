@@ -15,7 +15,7 @@ ACCEPTANCE = 0.70  # Taxa de acerto
 
 
 # openai_key = os.getenv('KeyAPI')
-KeyAPI = '' #os.environ['PassW']
+KeyAPI = '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' #os.environ['PassW']
 openai.api_key = KeyAPI
 
 openai.ChatCompletion.create(
