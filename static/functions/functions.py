@@ -1,12 +1,14 @@
 import re
 import pyttsx3
-from rich import print
 import platform
 import sys
+import uuid
+import sqlite3
+
 from datetime import datetime
+from rich import print
 from plyer import notification
-import json
-import os
+
 
 
 # Config >>>
@@ -132,42 +134,89 @@ def time_hour():
 	hora = datetime.now()
 	horas= hora.strftime('%H horas e %M minutos')
 	fale(f'Agora são {horas}')
-        
+
+
+
+
+
+
+#Salva Historico
 
 
 def salvar_conversa(pergunta, resposta):
     # define o nome do arquivo a ser utilizado
-    arquivo = 'static/memory/memory.json'
+    
 
-    # verifica se o arquivo já existe
-    if os.path.isfile(arquivo):
-        # abre o arquivo existente em modo de leitura
-        with open(arquivo, 'r', encoding='utf-8') as f:
-            # carrega o conteúdo do arquivo para um objeto Python
-            conversa = json.load(f)
-    else:
-        # se o arquivo não existe, cria um novo objeto Python vazio
-        conversa = {'mensagens': []}
+    # cria uma conexão com o banco de dados
+    conn = sqlite3.connect('conversas.db')
 
-    # gera um ID baseado na data e hora atual
-    id_mensagem = int(datetime.now().strftime('%Y%m%d%H%M%S%f'))
+    # cria a tabela de mensagens se ela não existe
+    conn.execute('''
+        CREATE TABLE IF NOT EXISTS mensagens (
+            id TEXT PRIMARY KEY,
+            role TEXT,
+            content TEXT,
+            in_reply_to TEXT
+        )
+    ''')
 
-    # adiciona a nova mensagem à lista de mensagens
-    conversa['mensagens'].append({
-        'id': id_mensagem,
-        'role': 'user',
-        'content': pergunta
-    })
-    conversa['mensagens'].append({
-        'id-resp': id_mensagem,
-        'role': 'bot',
-        'content': resposta,
-        'in_reply_to': id_mensagem
-    })
+    # gera um ID único para a mensagem
+    id_mensagem = str(uuid.uuid4())
 
-    # abre o arquivo em modo de escrita e salva o objeto Python como JSON em UTF-8
-    with open(arquivo, 'w', encoding='utf-8') as f:
-        json.dump(conversa, f, ensure_ascii=False)
+    # insere a mensagem do usuário na tabela
+    conn.execute('''
+        INSERT INTO mensagens (id, role, content)
+        VALUES (?, ?, ?)
+    ''', (id_mensagem, 'user', pergunta))
 
-    print(f"Conversa salva com sucesso no arquivo '{arquivo}'")
+    # insere a mensagem do bot na tabela
+    conn.execute('''
+        INSERT INTO mensagens (id, role, content, in_reply_to)
+        VALUES (?, ?, ?, ?)
+    ''', (str(uuid.uuid4()), 'bot', resposta, id_mensagem))
+
+    # salva as mudanças no banco de dados
+    conn.commit()
+
+    # fecha a conexão com o banco de dados
+    conn.close()
+
+    print(f"Conversa salva com sucesso no banco de dados 'conversas.db'")
+
+
+
+
+
+
+
+#Obter histoico de conversas
+def obter_historico_de_conversas(db_path="conversas.db", max_tokens_per_message=4000, max_messages=None, part_size=100):
+    # conecte-se ao banco de dados
+    conn = sqlite3.connect(db_path)
+    c = conn.cursor()
+
+    # obtenha todas as mensagens da tabela de mensagens
+    c.execute('SELECT content FROM mensagens WHERE role = "user"')
+    mensagens = [row[0] for row in c.fetchall()]
+
+    # divida as mensagens em pedaços menores
+    mensagens_divididas = []
+    for mensagem in mensagens:
+        while len(mensagem) > max_tokens_per_message:
+            mensagens_divididas.append(mensagem[:max_tokens_per_message])
+            mensagem = mensagem[max_tokens_per_message:]
+        mensagens_divididas.append(mensagem)
+
+    # divida as mensagens em partes menores
+    mensagens_partes = [mensagens_divididas[i:i+part_size] for i in range(0, len(mensagens_divididas), part_size)]
+
+    # limite o número de mensagens retornadas, se necessário
+    if max_messages is not None:
+        mensagens_partes = mensagens_partes[:max_messages]
+
+    # feche a conexão com o banco de dados
+    conn.close()
+
+    return mensagens_partes
+
 

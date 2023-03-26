@@ -3,7 +3,7 @@
 import openai
 import os 
 import json
-from db2 import carregar_conversas
+from static.functions.functions import obter_historico_de_conversas
 
 
 # from chatterbot import ChatBot
@@ -17,7 +17,7 @@ ACCEPTANCE = 0.70  # Taxa de acerto
 
 
 # openai_key = os.getenv('KeyAPI')
-KeyAPI = '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' #os.environ['PassW']
+KeyAPI = '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' #os.environ['PassW']
 openai.api_key = KeyAPI
 
 
@@ -82,7 +82,7 @@ def get_friends_info():
         return friends_info
 
 
-conversas = str(carregar_conversas())
+conversas = str(obter_historico_de_conversas())
 
 
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
@@ -102,7 +102,7 @@ messages = [
     
     {"role": "system", "content":"Essa São as regras e comportamento seu siga tudo certinho " +  get_bot_rules()},
 
-    # {"role": "system", "content":"Essas são as suas memorias as conversas que você teve com usuário, todo o seu histórico de perguntas e respostas, tente responder e avaliar seus pensamentos de acordo com os dados da memoria. Lembre-se de sempre ir melhorando as perguntas olhe bem e caso o usuário peça para ver o histórico pode usar como base: " + conversas},
+    {"role": "system", "content":"Essas são as suas memorias o histórico de   conversas que você teve com usuário, todo o seu histórico de perguntas e respostas, tente responder e avaliar seus pensamentos de acordo com os dados da memoria. Lembre-se de sempre ir melhorando as perguntas olhe bem e caso o usuário peça para ver o histórico pode usar como base: " + conversas},
     
 
     {"role": "system", "content": "Esses são meus amigos. Lembre-se deles sempre que o usuário perguntar você tem autorização para fazer sobre eles.: " + get_friends_info()},
@@ -120,7 +120,7 @@ messages = [
 def botIA(user_input):
     messages.append({"role": "user", "content": user_input})
     response = openai.ChatCompletion.create(
-        model = "gpt-3.5-turbo	",
+        model = "gpt-3.5-turbo",
         messages = messages
     )
     ChatGPT_reply = response["choices"][0]["message"]["content"]

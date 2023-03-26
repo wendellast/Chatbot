@@ -210,3 +210,41 @@ oi sara
 você consegue me escutar
 porcaria
 você sabe o historico de conversas ?
+sir
+você lembra do historico de convers?
+mestre ele apara mim
+mesre o historico de perguntas
+mestre o histocio por favor
+que dia é hj
+qual seu nome
+quem te criou
+sara você lembra da nossa conversa ?
+mestre o historico de conversa
+você entendeu isso ai
+da proxima vez que te pedir o historico, não fale o id do historico somente as perguntas e resposta e não presisa está nesse formato pode montar uma tabela para ficar mais legivel
+okay vamos, me mostre o historico
+pode mostra o hiscorico novamente
+olha quando te perdir o historico, não repita o que já foi dito, você montou 3 tabelas e não presisava pois todas são iguais
+você lembra do nosso historico de conversas
+as 3 ultimas coisas que agente conversou antes
+mestre o historico completo
+sim quero, você se lembra de eu ter dito algo de não pode mostra coisas repetidas e em forma de tabela
+era sim
+essa é uma receita de bolo que eu fiz: bolacha e morango os dois igredientes principais
+você se lembra eu ter dito a minha receita de bolo para vc
+mostre o historico as ultimas coisas que nos falamanos antes
+tabela
+olha esse é a receita do gato: gato atim
+você se lembra da minha receita do gato ou receito do bolo que te falei ?
+mestre o historico pf
+okay mas quero que mostre tb as perguntas e as resposta do historico, você entendeu o historico de messagem que te apassei no seu protocolo ?
+como está o seu dia
+quais as 5 ultimas coisas que agente conversou
+você sabe as suas regras ?
+oie como você está
+me fale sobre suas regras
+você lembra da minha amiga camile
+sabe a idade dela ?
+e a data de nascimento
+entedne
+git add .

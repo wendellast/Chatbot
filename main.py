@@ -3,7 +3,9 @@ from train_sara import treinar
 from rich import print
 from static.functions.bots import *
 from static.functions.functions import *
+
 import datetime
+
 
 hora_atual = datetime.datetime.now().hour
 
@@ -182,6 +184,7 @@ def bot_resp(ask):
             fale(text)
             try:
                 salvar_conversa(ask, text)
+                
             except:
                 pass
             

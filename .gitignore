@@ -1,4 +1,6 @@
 static/config/cache/cache.txt
+static/memory/friends.json
+static/memory/family.json
 secure/
 venv/
 env/
