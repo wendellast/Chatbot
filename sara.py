@@ -81,7 +81,7 @@ class IA():
         while True:
             try:
                 
-                DIGITAR = False
+                DIGITAR = True
                 if '-d' in argv:
                     DIGITAR = True
 

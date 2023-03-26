@@ -178,12 +178,14 @@ def bot_resp(ask):
         try:
 
             resp1 = botIA(ask)
-            #print(resp1)
             text = str(resp1)
             fale(text)
+            try:
+                salvar_conversa(ask, text)
+            except:
+                pass
             
-            
-            return resp1
+           # return resp1
         except  Exception as e:
             print(e)    
 
