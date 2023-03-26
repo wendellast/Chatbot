@@ -1,9 +1,12 @@
+import re
 import pyttsx3
 from rich import print
 import platform
 import sys
 from datetime import datetime
 from plyer import notification
+import emoji
+
 # Config >>>
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 args = sys.argv  # Pegar argumentos terminal
@@ -42,6 +45,17 @@ else:
 # Functions>>>
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 
+def remove_emojis(text):
+    emoji_pattern = re.compile("["
+        u"\U0001F600-\U0001F64F"  # emoticons
+        u"\U0001F300-\U0001F5FF"  # symbols & pictographs
+        u"\U0001F680-\U0001F6FF"  # transport & map symbols
+        u"\U0001F1E0-\U0001F1FF"  # flags (iOS)
+        u"\U00002702-\U000027B0"
+        u"\U000024C2-\U0001F251"
+                           "]+", flags=re.UNICODE)
+    return emoji_pattern.sub(r'', text)
+
 # Fale, Diz a sara para dizer as frases em voz alta>>>
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 def fale(audio):
@@ -54,9 +68,18 @@ def fale(audio):
     if ('-U' in argv[0]):
         pass
     else:
+        
+        # audio = emoji.demojize(audio, delimiters=('', ''))
+
+      
+        audio = remove_emojis(audio)
+
+
         print(f'[bold purple]SARA:[/] [cyan]{audio}[/]')
         sara_voz.say(audio)
         sara_voz.runAndWait()         
+
+
 
     # stream.start_stream ()
 

@@ -81,7 +81,7 @@ class IA():
         while True:
             try:
                 
-                DIGITAR = True
+                DIGITAR = False
                 if '-d' in argv:
                     DIGITAR = True
 
@@ -107,7 +107,8 @@ class IA():
 
                 command_close = [
                     'sair', 'fecha','exit',
-                    'fechar'
+                    'fechar', 'sai', 'parar',
+                    'encerrar'
                 ]
             
               

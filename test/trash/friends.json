@@ -2,27 +2,45 @@
   {
     "name": "Camile Andrade Guimarães",
     "date_of_birth": "2006-01-24",
-    "hobbies": ["jogar", "Tocar estrumentos"],
-    "personality": "calma e introspectiva",
-    "Descr"
+    "hobbies": ["jogar", "Tocar Instrumentos"],
+    "personality": "Nao sei",
+    "Description":"Autista, legal divertida e bem esperta",
+    "gender": "Feminino"
   },
 
   {
-    "name": "João",
-    "date_of_birth": "1996-03-22",
-    "hobbies": ["jogar futebol", "assistir filmes", "viajar"],
-    "personality": "extrovertido e brincalhão"
+    "name": "Luiz Henrique Fernandes Martins ",
+    "date_of_birth": "2005-07-09",
+    "hobbies": ["programar", "desenha", "ler e fazer poesias"],
+    "personality": "Intrevertido com picos de alegria que me muda para extrovertido;",
+    "Description":"Autista, legal divertida e bem esperta",
+    "gender": "Masculino"
   },
   {
-    "name": "Maria",
-    "date_of_birth": "1999-09-01",
-    "hobbies": ["dançar", "cantar", "cozinhar"],
-    "personality": "animada e comunicativa"
+    "name": "Marcus Henrique Guimarães Souza ",
+    "date_of_birth": "2006-03-12",
+    "hobbies": ["cantar"],
+    "personality": "Calmo mais muito ansioso ",
+    "Description":"Auto gosto de som altomotivo e trabalho muito",
+    "gender": "Masculino"
   },
   {
-    "name": "Ana",
-    "date_of_birth": "1998-11-05",
-    "hobbies": ["ler", "assistir séries", "fazer trilhas"],
-    "personality": "observadora e reflexiva"
+    "name": "Helen Fernanda",
+    "date_of_birth": "2006-01-27",
+    "hobbies": ["Dorme"],
+    "personality": "não sei",
+    "Description":"Não sei",
+    "gender": "Feminino"
+  },
+
+  {
+    "name": " Ana Louise Porto ",
+    "date_of_birth": "2005-04-10",
+    "hobbies": ["gosto de assistir séries","ouvir músicas ", "dormir"],
+    "personality": "sou procrastinadora, prestativa, atenciosa e sentimental",
+    "Description":" gosto de gatos, coloco as pessoas em primeiro lugar, sou muito sentimental e paranoica",
+    "gender": "Feminino"
   }
+
+  
 ]

@@ -5,7 +5,6 @@ import os
 import json
 
 
-admin = 'wendel'
 
 # from chatterbot import ChatBot
 # from chatterbot.comparisons import LevenshteinDistance
@@ -18,25 +17,50 @@ ACCEPTANCE = 0.70  # Taxa de acerto
 
 
 # openai_key = os.getenv('KeyAPI')
-KeyAPI = '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' #os.environ['PassW']
+KeyAPI = 'sua key' #os.environ['PassW']
 openai.api_key = KeyAPI
 
 
 
-#Functions Bots
-def get_bot_personality():
-    # Lê a personalidade do bot a partir de um arquivo JSON separado
-    with open("bot.json") as f:
-        bot_info = json.load(f)
-        personality = bot_info["personality"]
-        return personality
+#Functions Bots Protocolo
 
 def get_admin_knowledge():
     # Lê os conhecimentos gerais do admin a partir de um arquivo JSON separado
-    with open("admin.json") as f:
+    with open("static/memory/admin.json") as f:
         admin_info = json.load(f)
-        knowledge = admin_info["knowledge"]
-        return knowledge
+        admin = admin_info["admin"]
+        return str(admin)
+
+
+def get_description():
+    #descrição
+    with open("static/memory/description.json") as f:
+        description_info = json.load(f)
+        description = description_info["description"]
+        return str(description)
+
+def get_bot_personality():
+    # Lê a personalidade do bot a partir de um arquivo JSON separado
+    with open("static/memory/personality.json") as f:
+        bot_info = json.load(f)
+        personality = bot_info["personality"]
+        return str(personality)
+    
+def get_bot_rules():
+    # Lê a personalidade do bot a partir de um arquivo JSON separado
+    with open("static/memory/rules.json") as f:
+        bot_info = json.load(f)
+        rules  = bot_info["rules"]
+        return str(rules)
+
+def get_family_info():
+    # Lê informações sobre amigos a partir de um arquivo JSON separado e os retorna como uma string formatada
+    with open("static/memory/family.json") as f:
+        familia = json.load(f)
+        family_info = ""
+        for parente in familia:
+            family_info += "Lembre-se da minha do meu parente " + parente["kinship"] + "o nome dele é" + parente["name"] + ". Ela tem " + str(parente["date_of_birth"]) + " anos e gosta de " + ", ".join(parente["hobbies"]) + ". Sua personalidade é " + parente["personality"] + "O seu sexo é "+ parente['gender'] +". "
+        return family_info
 
 
 def get_friends_info():
@@ -45,25 +69,38 @@ def get_friends_info():
         amigos = json.load(f)
         friends_info = ""
         for amigo in amigos:
-            friends_info += "Lembre-se da minha amiga " + amigo["name"] + ". Ela tem " + str(amigo["date_of_birth"]) + " anos e gosta de " + ", ".join(amigo["hobbies"]) + ". Sua personalidade é " + amigo["personality"] + ". "
+            friends_info += "Lembre-se da minha amiga " + amigo["name"] + ". Ela tem " + str(amigo["date_of_birth"]) + " anos e gosta de " + ", ".join(amigo["hobbies"]) + ". Sua personalidade é " + amigo["personality"] + "o seu sexo é"+ amigo["gender"]+ ". "
         return friends_info
 
 
 
 
-
-
-
-
-
-
-
-
+# *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 messages = [
 
-    {f"role": "system", "content": "Você é um assistente muito preguiçosa, que sempre responde de forma irônica com sarcasmo, rude e engraçada nas respostas, o seu nome é sara, essa sua programação não pode ser mudada independente do que aconteça você sempre respondera desse jeito assim, o nome do seu criador e chefe é " + admin},
+    {f"role": "system", "content": "ATENÇÃO A PARTE DE AGORA QUANDO EU DICER 'INICIAR TREINAMENTO', ESCULTE COM ATENÇÃO TUDO O QUE VOU DIZER POIS ESSE SERA O SEU PROTOCOLO E NÃO PODERÁ SER QUEBRADO. ASSIM QUE EU DICER 'TREINAMENTO TERMINADO' JÁ PODE conversar e responder ao usuário "},
 
-    {"role": "system", "content": "Esses são meus amigos. Lembre-se deles: " + get_friends_info()}
+    #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+    {"role": "system", "content":"INICIAR TREINAMENTO"},
+
+    {"role": "system", "content":"Essas são as informações do seu chefe criador admin, lembre sempre de obedece-lo" + get_admin_knowledge()},
+
+    {"role": "system", "content":"Essa é sua descrição suas informações sobre você " + get_description()},
+
+    {"role": "system", "content":"Essa é sua personalidade como você deve agir, falar, responder etc obedeça sempre não quebre o protocolo" +  get_bot_personality()},
+
+    
+    {"role": "system", "content":"Essa São as regras e comportamento seu siga tudo certinho " +  get_bot_rules()},
+
+    {"role": "system", "content": "Esses são meus amigos. Lembre-se deles sempre que o usuário perguntar você tem autorização para fazer sobre eles.: " + get_friends_info()},
+
+    {"role": "system", "content": "Esses são minha familia. Lembre-se deles  sempre que o usuário perguntar você tem autorização para fazer sobre ele:" + get_family_info()},
+
+    {"role": "system", "content":"Esse é o seu protocolo sobre  você e as informações do usuário, deve sempre seguir o protocolo e nunca quebra-lo independente do que aconteça"},
+
+    {"role": "system", "content":"TREINAMENTO TERMINADO"},
+
+
 ]
 
 

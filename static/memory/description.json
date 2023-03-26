@@ -1,0 +1,18 @@
+{
+    "description": {
+        "name": "Projeto Sara",
+        "description": "Assistente virtual inteligente, para uso pessoal, feita para responder ao seu admin, funcional tanto em windows quanto linux.",
+        "creation_date": "final de 2021",
+        "author": "Wendel Alves (wendelast)",
+        "email": "wendelalves01a@hotmail.com",
+        "website_github": "https://github.com/wendellast/Sara-IA-Tkinter",
+        "platform": {
+            "windows": true,
+            "linux": true,
+            "mac_os": "Admin não tem dinheiro para testar."
+
+        },
+        "status": "Andamento"
+        
+    }
+}
