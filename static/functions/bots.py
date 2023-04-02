@@ -1,7 +1,5 @@
-
 #import chatterbot
 import openai
-import os 
 import json
 from static.functions.functions import obter_historico_de_conversas
 
@@ -17,7 +15,7 @@ ACCEPTANCE = 0.70  # Taxa de acerto
 
 
 # openai_key = os.getenv('KeyAPI')
-KeyAPI = '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' #os.environ['PassW']
+KeyAPI = 'Seu key' #os.environ['PassW']
 openai.api_key = KeyAPI
 
 
@@ -52,8 +50,22 @@ def get_bot_rules():
         bot_info = json.load(f)
         rules  = bot_info["rules"]
         return str(rules)
+        
     
-
+def get_bot_mode():
+    # Lê a personalidade do bot a partir de um arquivo JSON separado
+    with open("static/memory/mode.json") as f:
+        bot_info = json.load(f)
+        mode  = bot_info["mode"]
+        return str(mode)
+    
+def get_bot_user():
+    # Lê a personalidade do bot a partir de um arquivo JSON separado
+    with open("static/memory/user.json") as f:
+        bot_info = json.load(f)
+        user  = bot_info["user"]
+        return str(user)
+    
 def get_bot_memory():
     # Lê os conhecimentos gerais do admin a partir de um arquivo JSON separado
     with open("static/memory/memory.json", encoding='utf-8') as f :
@@ -86,46 +98,45 @@ conversas = str(obter_historico_de_conversas())
 
 
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
-messages = [
-
-    {f"role": "system", "content": "ATENÇÃO A PARTE DE AGORA QUANDO EU DICER 'INICIAR TREINAMENTO', ESCULTE COM ATENÇÃO TUDO O QUE VOU DIZER POIS ESSE SERA O SEU PROTOCOLO E NÃO PODERÁ SER QUEBRADO. ASSIM QUE EU DICER 'TREINAMENTO TERMINADO' JÁ PODE conversar e responder ao usuário "},
-
-    #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-    {"role": "system", "content":"INICIAR TREINAMENTO"},
-
-    {"role": "system", "content":"Essas são as informações do seu chefe criador admin, lembre sempre de obedece-lo" + get_admin_knowledge()},
-
-    {"role": "system", "content":"Essa é sua descrição suas informações sobre você " + get_description()},
-
-    {"role": "system", "content":"Essa é sua personalidade como você deve agir, falar, responder etc obedeça sempre não quebre o protocolo" +  get_bot_personality()},
-
-    
-    {"role": "system", "content":"Essa São as regras e comportamento seu siga tudo certinho " +  get_bot_rules()},
-
-    {"role": "system", "content":"Essas são as suas memorias o histórico de   conversas que você teve com usuário, todo o seu histórico de perguntas e respostas, tente responder e avaliar seus pensamentos de acordo com os dados da memoria. Lembre-se de sempre ir melhorando as perguntas olhe bem e caso o usuário peça para ver o histórico pode usar como base: " + conversas},
-    
-
-    {"role": "system", "content": "Esses são meus amigos. Lembre-se deles sempre que o usuário perguntar você tem autorização para fazer sobre eles.: " + get_friends_info()},
-
-    {"role": "system", "content": "Esses são minha familia. Lembre-se deles  sempre que o usuário perguntar você tem autorização para fazer sobre ele:" + get_family_info()},
-
-    {"role": "system", "content":"Esse é o seu protocolo sobre  você e as informações do usuário, deve sempre seguir o protocolo e nunca quebra-lo independente do que aconteça"},
-
-    {"role": "system", "content":"TREINAMENTO TERMINADO"},
 
 
+
+messages= [
+
+{f"role": "system", "content": "Atenção esse é o seu protocolo de funções e como você e o que deve fazer, esculte bem e preste muita atenção "},
+
+#-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+
+{"role": "system", "content":"Essa é sua descrição suas informações sobre você " + get_description()},
+
+{"role": "system", "content":"Essa é sua personalidade como você deve agir, falar, responder etc obedeça sempre não quebre o protocolo" +  get_bot_personality()},
+
+
+{"role": "system", "content":"Essa São as regras e comportamento seu siga tudo certinho " +  get_bot_rules()},
+
+# {"role": "system", "content":"Esse o é o histórico de messages do seu criador, você deve analisar o histórico para lembrar do que foi dito antes, e aprender e melhorar suas perguntas e resposta, preste muita atenção nos dados ai e lembre-se sempre deles: " + conversas},
+
+
+
+{"role": "system", "content":"Esse é o seu protocolo sobre  você e as informações do usuário, deve sempre seguir o protocolo e nunca quebra-lo independente do que aconteça"},
 ]
+
+
+
 
 
 def botIA(user_input):
     messages.append({"role": "user", "content": user_input})
     response = openai.ChatCompletion.create(
-        model = "gpt-3.5-turbo",
+        model = "gpt-3.5-turbo-0301",
         messages = messages
     )
     ChatGPT_reply = response["choices"][0]["message"]["content"]
     messages.append({"role": "assistant", "content": ChatGPT_reply})
     return ChatGPT_reply
+
+
 
 
 # # OPENAI

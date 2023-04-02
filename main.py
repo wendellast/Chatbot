@@ -182,11 +182,11 @@ def bot_resp(ask):
             resp1 = botIA(ask)
             text = str(resp1)
             fale(text)
-            try:
-                salvar_conversa(ask, text)
+            # try:
+            #     salvar_conversa(ask, text)
                 
-            except:
-                pass
+            # except:
+            #     pass
             
            # return resp1
         except  Exception as e:

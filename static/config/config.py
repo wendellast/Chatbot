@@ -36,7 +36,7 @@ def designer_sara(): # Linha para menu
     return 0
 
 def primeira_vez():
-    ler = open('static/config/cache/cache.txt', 'r')
+    ler = open('static/config/cache/cache.txt', 'r', encoding='utf-8')
     leitura = json.loads(ler.read())
     if leitura == 0:
         fale('Oie, Meu nome é Sara')
@@ -47,7 +47,7 @@ def primeira_vez():
         fale('Se você não souber basta digitar ou falar')
         fale('"help comandos" para ver os meus comandos')
         dicionario = 1
-        f = open('static/config/cache/cache.txt', 'w+')
+        f = open('static/config/cache/cache.txt', 'w+',  encoding='utf-8')
         f.write(json.dumps(dicionario))
 
     elif leitura == 1:

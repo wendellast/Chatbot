@@ -148,7 +148,7 @@ def salvar_conversa(pergunta, resposta):
     
 
     # cria uma conexão com o banco de dados
-    conn = sqlite3.connect('conversas.db')
+    conn = sqlite3.connect('chat.db')
 
     # cria a tabela de mensagens se ela não existe
     conn.execute('''
@@ -186,11 +186,8 @@ def salvar_conversa(pergunta, resposta):
 
 
 
-
-
-
 #Obter histoico de conversas
-def obter_historico_de_conversas(db_path="conversas.db", max_tokens_per_message=4000, max_messages=None, part_size=100):
+def obter_historico_de_conversas(db_path="chat.db", max_tokens_per_message=4000, max_messages=None, part_size=100):
     # conecte-se ao banco de dados
     conn = sqlite3.connect(db_path)
     c = conn.cursor()
