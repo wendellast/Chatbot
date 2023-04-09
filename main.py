@@ -1,5 +1,4 @@
 import os
-from train_sara import treinar
 from rich import print
 from static.functions.bots import *
 from static.functions.functions import *
@@ -13,9 +12,10 @@ Horario = int(hora_atual)
 
 # Main >>>
 # *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
+
+
 def bot_resp(ask):
     ask = ask.lower()
-   
 
     # History
     file_path = 'static/config/cache/temp.txt'
@@ -24,11 +24,11 @@ def bot_resp(ask):
         open(file_path, 'w').close()
 
     try:
-        with open(file_path, 'r') as arg:
+        with open(file_path, 'r', encoding='utf-8') as arg:
             if ask in arg.read().splitlines():
                 pass
             else:
-                with open(file_path, 'a') as arq:
+                with open(file_path, 'a', encoding='utf-8') as arq:
                     arq.write(f'{ask}\n')
     except:
         say(['Desculpe, não foi possível, salvar o seu comando algo deu errado'])
@@ -166,37 +166,40 @@ def bot_resp(ask):
             say(['Desculpe não foi possível mostra o histórico algo deu errado !'])
 
     elif (['limpar histórico', 'limpar historico', 'apagar histórico', 'delete o histórico', 'apague comandos', 'clear historico'][0] in ask):
-        
+
         say(['Tudo bem,' ' Vou limpar o histórico de comandos !'])
         try:
             with open(file_path, 'r+') as arg:
                 arg.truncate(0)
             say(['Histórico limpo com sucesso!'])
         except:
-            
+
             say(['Desculpe, eu não consegue apagar o histórico algo deu errado'])
 
     else:
         try:
 
-            resp1 = botIA(ask)
-            text = str(resp1)
-            fale(text)
+            # resp1 = botIA(ask)
+            # text = str(resp1)
+            # fale(text)
+
+            speak(ask)
+
             # try:
             #     salvar_conversa(ask, text)
-                
+
             # except:
             #     pass
-            
-           # return resp1
-        except  Exception as e:
-            print(e)    
 
-    #LAgacy
+           # return resp1
+        except Exception as e:
+            print(e)
+
+    # LAgacy
     # # Resposta Chatterbot
         # response = botChat.get_response(ask)
         # if response.confidence > 0.0:
-            
+
         #     print(response.text)
         #     return response.text
 

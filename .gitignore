@@ -8,3 +8,6 @@ env/
 test/tash/
 oline.py
 api/
+.mypy_cache/
+*__pycache__    
+__pycache__
